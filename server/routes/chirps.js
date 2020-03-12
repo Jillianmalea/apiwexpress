@@ -2,7 +2,7 @@ const express = require('express'),
     router = express.Router(),
     chirpStore = require('../chirpstore');
 
-router.get('/:id?', (req, res) => {
+router.get('/:?', (req, res) => {
     if (req.params.id) {
         let chirp = chirpStore.GetChirp(req.params.id);
         res.send(chirp);
