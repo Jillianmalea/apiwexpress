@@ -6,16 +6,18 @@ if(fs.existsSync('chirps.json')) {
 }
 
 let getChirps = () => {
-    return Object.assign({}, chirps); //create a copy and return it
+    return Object.assign({}, chirps); 
 }
-
-let getChirp = id => {
-    return Object.assign({}, chirps[id]); //create a copy and return it
-}
-
 let createChirp = (chirp) => {
     chirps[chirps.nextid++] = chirp;
     writeChirps();
+};
+let getChirp = id => {
+    return Object.assign({}, chirps[id]); 
+}
+
+let writeChirps = () => {
+    fs.writeFileSync('chirps.json', JSON.stringify(chirps));
 };
 
 let updateChirp = (id, chirp) => {
@@ -28,14 +30,11 @@ let deleteChirp = id => {
     writeChirps();
 }
 
-let writeChirps = () => {
-    fs.writeFileSync('chirps.json', JSON.stringify(chirps));
-};
 
 module.exports = {
     CreateChirp: createChirp,
-    DeleteChirp: deleteChirp,
     GetChirps: getChirps,
     GetChirp: getChirp,
-    UpdateChirp: updateChirp
+    UpdateChirp: updateChirp,
+    DeleteChirp: deleteChirp
 }

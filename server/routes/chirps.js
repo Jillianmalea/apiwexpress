@@ -12,16 +12,16 @@ router.get('/:id?', (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
-    chirpStore.CreateChirp(req.body);
-    res.sendStatus(200);
-});
+
 
 router.put('/:id', (req, res) => {
     chirpStore.UpdateChirp(req.params.id, req.body);
     res.sendStatus(200);
 });
-
+router.post('/', (req, res) => {
+    chirpStore.CreateChirp(req.body);
+    res.sendStatus(200);
+});
 router.delete('/:id', (req, res) => {
     chirpStore.DeleteChirp(req.params.id);
     res.sendStatus(200);
